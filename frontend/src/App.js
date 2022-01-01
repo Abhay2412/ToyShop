@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer  from './components/Footer';
+import HomeView from './views/HomeView';
 
 const App = () => { //Arrow function 
   return (
@@ -9,7 +10,7 @@ const App = () => { //Arrow function
     <Header />
     <main className="py-4">
       <Container>
-      <h1>Welcome To Toys Shop</h1>
+      <HomeView/>
       </Container>
     </main>
     <Footer />
