@@ -7,9 +7,9 @@ const App = () => { //Arrow function
   return (
     <>
     <Header />
-    <main>
+    <main className="py-4">
       <Container>
-      <h1>Welcome to Toys Shop</h1>
+      <h1>Welcome To Toys Shop</h1>
       </Container>
     </main>
     <Footer />
