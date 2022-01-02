@@ -9,7 +9,7 @@ const HomeView = () => {
          <h1>Newest Toys and Games</h1>   
          <Row>
             {products.map(item => (
-                <Col sm={12} md={6} lg={4}>
+                <Col key={item._id} sm={12} md={6} lg={4}>
                     <Product item={item}/>
                 </Col>
             ))}
