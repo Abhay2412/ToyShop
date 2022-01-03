@@ -8,7 +8,7 @@ const ProductDetailedView = ({ match }) => {
     const item = products.find(p => p._id === match.params.id)
     return (
         <>
-        <Link className='btn btn-light my-2' to='/' style={{opacity: 0}}>
+        <Link className='btn btn-light my-2' to='/' style={{ backgroundColor: 'transparent', border: 'none' }}>
             Back to Shopping
         </Link>
         <Row>
