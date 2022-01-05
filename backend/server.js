@@ -3,23 +3,23 @@ import dotenv from 'dotenv';
 import connectDB from './config/database.js';
 import products from './data/products.js';
 
-dotenv.config()
+dotenv.config();
 
-connectDB()
+connectDB();
 
-const app = express()
+const app = express();
 
 app.get('/', (request, response) => {
-    response.send('The GET API is working...')
+    response.send('The GET API is working...');
 })
 
 app.get('/api/products', (request, response) => {
-    response.json(products)
+    response.json(products);
 })
 
 app.get('/api/products/:id', (request, response) => {
     const item = products.find(i => i._id === request.params.id)
-    response.json(item)
+    response.json(item);
 })
 
 const PORT = process.env.PORT || 5000

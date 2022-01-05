@@ -11,10 +11,10 @@ const ProductDetailedView = ({ match }) => {
         const getItem = async () => {
             const { data } = await axios.get(`/api/products/${match.params.id}`)
 
-            setItem(data)
+            setItem(data);
         }
 
-        getItem()
+        getItem();
     }, [match])
 
     return (

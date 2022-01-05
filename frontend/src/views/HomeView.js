@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col } from 'react-bootstrap'
-import Product from '../components/Product'
-import axios from 'axios'
+import { Row, Col } from 'react-bootstrap';
+import Product from '../components/Product';
+import axios from 'axios';
 
 const HomeView = () => {
     const [products, setProducts] = useState([])
@@ -10,10 +10,10 @@ const HomeView = () => {
         const getProducts = async () => {
             const { data } = await axios.get('/api/products')
 
-            setProducts(data)
+            setProducts(data);
         }
 
-        getProducts()
+        getProducts();
     }, [])
 
     return (
