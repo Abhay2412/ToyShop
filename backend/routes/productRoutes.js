@@ -20,9 +20,9 @@ router.get('/:id', asyncHandler(async (request, response) => {
     if(item) {
         response.json(item);
     } else {
-        response.status(404).json({ message: 'Item not found' })
-    } 
-}))
+        response.status(404);
+        throw new Error('Item not found')
+}}))
 
 
 export default router;
