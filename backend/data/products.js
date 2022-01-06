@@ -1,6 +1,5 @@
 const products = [
   {
-    _id: '1',
     name: 'Sony PlayStation 5 Console Disc Edition',
     image: '/images/playstation.jpg',
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 47,
   },
   {
-    _id: '2',
     name: 'Xbox Series X 1TB Console',
     image: '/images/xbox.jpg',
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 15118,
   },
   {
-    _id: '3',
     name: "Rubik's Cube, The Original 3x3",
     image: '/images/rubik.jpg',
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 15,
   },
   {
-    _id: '4',
     name: 'Monopoly Classic Game',
     image: '/images/monopoly.png',
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 921,
   },
   {
-    _id: '5',
     name: 'Hot Wheels 10-Car Pack',
     image: '/images/hotwheels10pk.jpg',
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 2487,
   },
   {
-    _id: '6',
     name: 'Barbie Dreamhouse Dollhouse',
     image: '/images/dollhouse.jpg',
     description:
