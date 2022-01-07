@@ -7,7 +7,7 @@ import Product from '../models/productModel.js'
 // @route: GET Request to the products
 //@acesss: Public-> meaning anyone can hit this route
 router.get('/', asyncHandler(async (request, response) => {
-    const products = await Product.find({})
+    const products = await Product.find({});
     response.json(products);
 }))
 
