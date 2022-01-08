@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Footer  from './components/Footer';
 import HomeView from './views/HomeView';
 import ProductDetailedView from './views/ProductDetailedView';
+import CartView from './views/CartView';
 
 const App = () => { //Arrow function 
   return (
@@ -14,6 +15,7 @@ const App = () => { //Arrow function
       <Container>
       <Route path='/' component={HomeView} exact />
       <Route path='/product/:id' component={ProductDetailedView} />
+      <Route path='/cart/:id?' component={CartView} />
       </Container>
     </main>
     <Footer />
