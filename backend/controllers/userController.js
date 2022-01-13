@@ -26,6 +26,42 @@ const authorizeUser = asyncHandler(async (request, response) => {
 
 })
 
+// @description: Register a new user
+// @route: POST Request to the users creation
+//@acesss: Public-> meaning anyone can hit this route
+const registerUser = asyncHandler(async (request, response) => {
+    const { name, email, password } = request.body;
+
+    const userExists = await User.findOne({ email });
+
+    if(userExists) {
+        response.status(400);
+        throw new Error('User already exists');
+    }
+
+    const user = await User.create({
+        name, 
+        email, 
+        password
+    })
+
+    if(user) {
+        response.status(201).json({
+            _id: user._id,
+            name: user.name, 
+            email: user.email, 
+            isAdmin: user.isAdmin,
+            token: generateToken(user._id),
+        })
+    } else {
+        response.status(400);
+        throw new Error('Invalid user data');
+    }
+
+})
+
+
+
 // @description: Retrieveing the user profile
 // @route: GET Request to the users profile
 //@acesss: Private-> protected route not to the public
@@ -49,4 +85,4 @@ const getUserProfile = asyncHandler(async (request, response) => {
 
 
 
-export { authorizeUser, getUserProfile };
+export { authorizeUser, getUserProfile, registerUser };
