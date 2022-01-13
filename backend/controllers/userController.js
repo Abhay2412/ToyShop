@@ -26,4 +26,27 @@ const authorizeUser = asyncHandler(async (request, response) => {
 
 })
 
-export { authorizeUser };
+// @description: Retrieveing the user profile
+// @route: GET Request to the users profile
+//@acesss: Private-> protected route not to the public
+const getUserProfile = asyncHandler(async (request, response) => {
+    const user = await User.findById(request.user._id);
+
+    if(user) {
+        response.json({
+            _id: user._id,
+            name: user.name, 
+            email: user.email, 
+            isAdmin: user.isAdmin,
+        })
+    }
+    else {
+        response.status(404);
+        throw new Error('The user is not found');
+    }
+})
+
+
+
+
+export { authorizeUser, getUserProfile };
