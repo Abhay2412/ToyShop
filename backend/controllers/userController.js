@@ -24,7 +24,7 @@ const authorizeUser = asyncHandler(async (request, response) => {
         throw new Error('Invalid email or password');
     }
 
-})
+});
 
 // @description: Register a new user
 // @route: POST Request to the users creation

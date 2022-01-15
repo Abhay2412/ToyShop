@@ -6,6 +6,7 @@ import Footer  from './components/Footer';
 import HomeView from './views/HomeView';
 import ProductDetailedView from './views/ProductDetailedView';
 import CartView from './views/CartView';
+import SignInView from './views/SignInView';
 
 const App = () => { //Arrow function 
   return (
@@ -13,9 +14,10 @@ const App = () => { //Arrow function
     <Header />
     <main className="py-4">
       <Container>
-      <Route path='/' component={HomeView} exact />
+      <Route path='/login' component={SignInView} />
       <Route path='/product/:id' component={ProductDetailedView} />
       <Route path='/cart/:id?' component={CartView} />
+      <Route path='/' component={HomeView} exact />
       </Container>
     </main>
     <Footer />
