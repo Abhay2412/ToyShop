@@ -17,7 +17,7 @@ const authorizeUser = asyncHandler(async (request, response) => {
             email: user.email, 
             isAdmin: user.isAdmin,
             token: generateToken(user._id),
-        })
+        });
     }
     else {
         response.status(401); //Not authroized
@@ -52,13 +52,13 @@ const registerUser = asyncHandler(async (request, response) => {
             email: user.email, 
             isAdmin: user.isAdmin,
             token: generateToken(user._id),
-        })
+        });
     } else {
         response.status(400);
         throw new Error('Invalid user data');
     }
 
-})
+});
 
 
 
@@ -74,15 +74,43 @@ const getUserProfile = asyncHandler(async (request, response) => {
             name: user.name, 
             email: user.email, 
             isAdmin: user.isAdmin,
-        })
+        });
     }
     else {
         response.status(404);
         throw new Error('The user is not found');
     }
-})
+});
 
 
 
+// @description: Updating the user profile
+// @route: PUT Request to the users profile for updating
+//@acesss: Private-> protected route not to the public
+const updateUserProfile = asyncHandler(async (request, response) => {
+    const user = await User.findById(request.user._id);
 
-export { authorizeUser, getUserProfile, registerUser };
+    if(user) {
+        user.name = request.body.name || user.name
+        user.email = request.body.email || user.email 
+        if(request.body.password) {
+            user.password = request.body.password
+           }
+
+        const updatedUser = await user.save();
+
+        response.json({
+            _id: updatedUser._id,
+            name: updatedUser.name, 
+            email: updatedUser.email, 
+            isAdmin: updatedUser.isAdmin,
+        });
+    }
+    else {
+        response.status(404);
+        throw new Error('The user is not found');
+    }
+});
+
+
+export { authorizeUser, getUserProfile, registerUser, updateUserProfile };
