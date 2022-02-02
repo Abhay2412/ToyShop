@@ -8,6 +8,7 @@ import ProductDetailedView from './views/ProductDetailedView';
 import CartView from './views/CartView';
 import SignInView from './views/SignInView';
 import RegisterView from './views/RegisterView';
+import ProfileView from './views/ProfileView';
 
 const App = () => { //Arrow function 
   return (
@@ -17,6 +18,7 @@ const App = () => { //Arrow function
       <Container>
       <Route path='/login' component={SignInView} />
       <Route path='/register' component={RegisterView} />
+      <Route path='/profile' component={ProfileView} />
       <Route path='/product/:id' component={ProductDetailedView} />
       <Route path='/cart/:id?' component={CartView} />
       <Route path='/' component={HomeView} exact />
