@@ -5,16 +5,16 @@ import Order from '../models/orderModel.js';
 // @route: POST  Request to the new order
 //@acesss: Private-> meaning nobody has access to this 
 const addOrderItems = asyncHandler(async (request, response) => {
-    const { orderItems, shippingAddress, paymentMethod, productsPrice, taxPrice, 
+    const { orderitems, shippingAddress, paymentMethod, productsPrice, taxPrice, 
     shippingPrice, totalPrice, } = request.body;
 
-    if(orderItems && orderItems.length === 0) {
+    if(orderitems && orderitems.length === 0) {
         response.status(400);
         throw new Error('No order items');
         return;
     } else {
         const order = new Order({
-            orderItems, user: request.user._id, shippingAddress, paymentMethod, productsPrice, taxPrice, 
+            orderitems, user: request.user._id, shippingAddress, paymentMethod, productsPrice, taxPrice, 
             shippingPrice, totalPrice,
         });
 
@@ -22,6 +22,23 @@ const addOrderItems = asyncHandler(async (request, response) => {
 
         response.status(201).json(makedOrder);
     }
-})
+});
 
-export { addOrderItems };
+// @description: Will be getting the order by it's ID
+// @route: GET  Request to getting the order 
+//@acesss: Private-> meaning nobody has access to this 
+const getOrderById = asyncHandler(async (request, response) => {
+    const order = await Order.findById(request.params.id).populate('user', 'name email');
+
+    if(order) {
+        response.json(order);
+    } else {
+        response.status(404);
+        throw new Error('Order not found in the database');
+    }
+
+});
+
+
+
+export { addOrderItems, getOrderById };
