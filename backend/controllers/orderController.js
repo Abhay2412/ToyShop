@@ -6,16 +6,17 @@ import Order from '../models/orderModel.js';
 //@acesss: Private-> meaning nobody has access to this 
 const addOrderItems = asyncHandler(async (request, response) => {
     const { orderItems, shippingAddress, paymentMethod, productsPrice, taxPrice, 
-    shippingPrice, totalPrice } = request.body;
+    shippingPrice, totalPrice, } = request.body;
 
     if(orderItems && orderItems.length === 0) {
         response.status(400);
         throw new Error('No order items');
+        return;
     } else {
         const order = new Order({
-            orderItems, user: req.user._id, shippingAddress, paymentMethod, productsPrice, taxPrice, 
-            shippingPrice, totalPrice
-        })
+            orderItems, user: request.user._id, shippingAddress, paymentMethod, productsPrice, taxPrice, 
+            shippingPrice, totalPrice,
+        });
 
         const makedOrder = await order.save();
 
