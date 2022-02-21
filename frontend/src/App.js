@@ -12,6 +12,7 @@ import ProfileView from './views/ProfileView';
 import ShippingView from './views/ShippingView';
 import PayView from './views/PayView';
 import PlaceOrderView from './views/PlaceOrderView';
+import OrderView from './views/OrderView';
 
 const App = () => { //Arrow function 
   return (
@@ -19,6 +20,7 @@ const App = () => { //Arrow function
     <Header />
     <main className="py-4">
       <Container>
+      <Route path='/order/:id' component={OrderView} />
       <Route path='/shipping' component={ShippingView} />
       <Route path='/payment' component={PayView} />
       <Route path='/placeorder' component={PlaceOrderView} />
