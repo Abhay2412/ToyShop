@@ -64,6 +64,14 @@ const updateOrderToPaid = asyncHandler(async (request, response) => {
 
 });
 
+// @description: Get the user who is logged in orders and display them
+// @route: GET  Request to getting the order and go to myorders
+//@acesss: Private-> meaning nobody has access to this 
+const getMyOrders = asyncHandler(async (request, response) => {
+    const orders = await Order.find({ user: req.user._id });
+    response.json(orders);
+});
 
 
-export { addOrderItems, getOrderById, updateOrderToPaid };
+
+export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders };
