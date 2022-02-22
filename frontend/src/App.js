@@ -13,7 +13,7 @@ import ShippingView from './views/ShippingView';
 import PayView from './views/PayView';
 import PlaceOrderView from './views/PlaceOrderView';
 import OrderView from './views/OrderView';
-import UserListView from './views/userListView';
+import UserListView from './views/UserListView';
 
 const App = () => { //Arrow function 
   return (
