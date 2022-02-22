@@ -39,6 +39,31 @@ const getOrderById = asyncHandler(async (request, response) => {
 
 });
 
+// @description: Will be updating the order to paid
+// @route: GET  Request to getting the order and got to pay
+//@acesss: Private-> meaning nobody has access to this 
+const updateOrderToPaid = asyncHandler(async (request, response) => {
+    const order = await Order.findById(request.params.id);
+
+    if(order) {
+        order.isPaid = true;
+        order.paidAt = Date.now();
+        order.paymentResult = {
+            id: req.body.id,
+            status: req.body.status,
+            update_time: req.body.update_time,
+            email_address: req.body.payer.email_address,
+        }
+        const updatedOrder = await order.save();
+
+        response.json(updatedOrder);
+    } else {
+        response.status(404);
+        throw new Error('Order not found in the database');
+    }
+
+});
 
 
-export { addOrderItems, getOrderById };
+
+export { addOrderItems, getOrderById, updateOrderToPaid };
