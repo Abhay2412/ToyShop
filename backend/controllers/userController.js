@@ -113,4 +113,13 @@ const updateUserProfile = asyncHandler(async (request, response) => {
 });
 
 
-export { authorizeUser, getUserProfile, registerUser, updateUserProfile };
+// @description: Retrieveing all of the users in the database
+// @route: GET Request to the all the users 
+//@acesss: Private-> protected route not to the public
+const getUsers = asyncHandler(async (request, response) => {
+    const users = await User.find({});
+
+    response.json(users);
+});
+
+export { authorizeUser, getUserProfile, registerUser, updateUserProfile, getUsers };
