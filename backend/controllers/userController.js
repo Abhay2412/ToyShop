@@ -122,4 +122,20 @@ const getUsers = asyncHandler(async (request, response) => {
     response.json(users);
 });
 
-export { authorizeUser, getUserProfile, registerUser, updateUserProfile, getUsers };
+// @description: Deleteting the user from the database by their ID
+// @route: DELETE Request to the specifed user
+//@acesss: Private-> protected route not to the public
+const deleteUser = asyncHandler(async (request, response) => {
+    const user = await User.findById(req.params.id);
+
+    if(user) {
+        await user.remove();
+        response.json({ message: 'User deleted from the database' });
+    }
+    else {
+        response.status(404);
+        throw new Error('User not found');
+    }
+});
+
+export { authorizeUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser };
