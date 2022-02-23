@@ -39,4 +39,58 @@ const deleteProduct = asyncHandler(async (request, response) => {
     }
 });
 
-export { getProducts, getProductByID, deleteProduct };
+// @description: Create one single item in the database
+// @route: POST  Request to the product and creating it
+//@acesss: Private-> protected route not to the public
+const createProduct = asyncHandler(async (request, response) => {
+    const item = new Product ({
+        name: 'Sample name',
+        price: 0,
+        user: request.user._id,
+        image: '/images/sample.jpg',
+        brand: 'Sample brand',
+        category: 'Sample category',
+        countInStock: 0,
+        numReviews: 0,
+        description: 'Simple description'
+    });
+
+    const createdItem = await item.save();
+    response.status(201).json(createdItem);
+});
+
+// @description: Update one single item in the database
+// @route: PUT  Request to the product with their id's and updating them
+//@acesss: Private-> protected route not to the public
+const updateProduct = asyncHandler(async (request, response) => {
+    const {
+        name,
+        price, 
+        description, 
+        image, 
+        brand, 
+        category, 
+        countInStock,
+    } = request.body;
+
+    const item = await Product.findById(request.params.id);
+    
+    if(item) {
+        item.name = name;
+        item.price = price;
+        item.description = description;
+        item.image = image;
+        item.brand = brand;
+        item.category = category;
+        item.countInStock = countInStock;
+
+        const updatedItem = await item.save();
+        response.status(201).json(updatedItem);
+    }
+    else {
+        response.status(404);
+        throw new Error('The item is not found');
+    }
+});
+
+export { getProducts, getProductByID, deleteProduct, createProduct, updateProduct };
