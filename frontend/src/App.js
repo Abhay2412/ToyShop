@@ -15,6 +15,7 @@ import PlaceOrderView from './views/PlaceOrderView';
 import OrderView from './views/OrderView';
 import UserListView from './views/UserListView';
 import UserEditView from './views/UserEditView';
+import ProductListView from './views/ProductListView';
 
 const App = () => { //Arrow function 
   return (
@@ -32,6 +33,7 @@ const App = () => { //Arrow function
       <Route path='/product/:id' component={ProductDetailedView} />
       <Route path='/cart/:id?' component={CartView} />
       <Route path='/admin/userlist' component={UserListView} />
+      <Route path='/admin/productlist' component={ProductListView} />
       <Route path='/admin/user/:id/edit' component={UserEditView} />
       <Route path='/' component={HomeView} exact />
       </Container>
