@@ -14,6 +14,7 @@ import PayView from './views/PayView';
 import PlaceOrderView from './views/PlaceOrderView';
 import OrderView from './views/OrderView';
 import UserListView from './views/UserListView';
+import UserEditView from './views/UserEditView';
 
 const App = () => { //Arrow function 
   return (
@@ -31,6 +32,7 @@ const App = () => { //Arrow function
       <Route path='/product/:id' component={ProductDetailedView} />
       <Route path='/cart/:id?' component={CartView} />
       <Route path='/admin/userlist' component={UserListView} />
+      <Route path='/admin/user/:id/edit' component={UserEditView} />
       <Route path='/' component={HomeView} exact />
       </Container>
     </main>
