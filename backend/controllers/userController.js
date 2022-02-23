@@ -91,10 +91,10 @@ const updateUserProfile = asyncHandler(async (request, response) => {
     const user = await User.findById(request.user._id);
 
     if(user) {
-        user.name = request.body.name || user.name
-        user.email = request.body.email || user.email 
+        user.name = request.body.name || user.name;
+        user.email = request.body.email || user.email; 
         if(request.body.password) {
-            user.password = request.body.password
+            user.password = request.body.password;
            }
 
         const updatedUser = await user.save();
@@ -104,6 +104,7 @@ const updateUserProfile = asyncHandler(async (request, response) => {
             name: updatedUser.name, 
             email: updatedUser.email, 
             isAdmin: updatedUser.isAdmin,
+            token: generateToken(updateUser._id),
         });
     }
     else {
@@ -126,7 +127,7 @@ const getUsers = asyncHandler(async (request, response) => {
 // @route: DELETE Request to the specifed user
 //@acesss: Private-> protected route not to the public
 const deleteUser = asyncHandler(async (request, response) => {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(request.params.id);
 
     if(user) {
         await user.remove();
@@ -134,8 +135,50 @@ const deleteUser = asyncHandler(async (request, response) => {
     }
     else {
         response.status(404);
-        throw new Error('User not found');
+        throw new Error('Teh user is not found');
     }
 });
 
-export { authorizeUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser };
+// @description: Retrieveing the user by ID
+// @route: GET Request to the user b it's ID
+//@acesss: Private-> protected route not to the public
+const getUserById = asyncHandler(async (request, response) => {
+    const user = await User.findById(request.params.id).select('-password');
+    if(user) {
+        response.json(user);
+    }
+    else {
+        response.status(404);
+        throw new Error('The user is not found');
+    }
+    
+});
+
+
+// @description: Updating the user profile for the Admin
+// @route: PUT Request to the users profile for updating
+//@acesss: Private-> protected route not to the public
+const updateUser = asyncHandler(async (request, response) => {
+    const user = await User.findById(request.params.id);
+
+    if(user) {
+        user.name = request.body.name || user.name;
+        user.email = request.body.email || user.email; 
+        user.isAdmin = request.body.isAdmin; 
+
+        const updatedUser = await user.save();
+
+        response.json({
+            _id: updatedUser._id,
+            name: updatedUser.name, 
+            email: updatedUser.email, 
+            isAdmin: updatedUser.isAdmin,
+        });
+    }
+    else {
+        response.status(404);
+        throw new Error('The user is not found');
+    }
+});
+
+export { authorizeUser, getUserProfile, registerUser, updateUserProfile, getUsers, deleteUser, getUserById, updateUser };
