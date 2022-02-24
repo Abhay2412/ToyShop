@@ -55,11 +55,11 @@ PAYPAL_CLIENT_ID = <your_paypal_client_id>
 npm run dev
 ```
 
-**4.Open your browser and go to this link for running the frontend:** 
+**4. Open your browser and go to this link for running the frontend:** 
 ```
 https://localhost:3000
 ```
-**5.Open your browser and go to this link for running the backend:** 
+**5. Open your browser and go to this link for running the backend:** 
 ```
 https://localhost:5000
 ```
