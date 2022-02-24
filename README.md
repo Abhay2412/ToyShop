@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white)![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Welcome to ToyShop! ✨
+This project is based on a common stack of MERN(MongoDB, Expres, ReactJs, Node.js) to create a ecommerce experience web application.
+It is not near perfect and is used to get some experience in all of these techonologies to develop efficent applications in the market. Some of the additional features would be adding in the pagination for the products, finishing the Admin side for the order. Being able to place an order with using the PayPal API properly. 
 
-## Available Scripts
+Live Demo: https://toyshopapp.herokuapp.com/
+**Project Link** - ***https://toyshopapp.herokuapp.com/***
 
-In the project directory, you can run:
+![screenshot](/frontend/public/images/homepage.png)
 
-### `npm start`
+## Features and Functionalities 😃
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**User features**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Able to browse the current products in the database
+- Add products into the cart go till the order 
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Admin features**
 
-### `npm run build`
+- Semi Admin Functionality 
+- Product Management
+- Order Management
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation Procedure:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**1. Clone this repo by running the following command :-**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+ git clone https://github.com/Abhay2412/ToyShop
+ cd ToyShop
+```
 
-### `npm run eject`
+**2. Now install all the required packages(frontend & backend) by running the following commands :-**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm install
+cd frontend
+npm install
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**2. Create a config.env file in config folder and add the following**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```
+NODE_ENV = development
+PORT = 5000
+MONGO_URI = <your_mongodb_uri>
+JWT_SECRET = <yoursecret>
+PAYPAL_CLIENT_ID = <your_paypal_client_id>
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**3. Now start the react and node server concurrently by running the following command :-**
+```
+#Start the application
+npm run dev
+```
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**5.** **🎉 Open your browser and go to for and running the frontend on `https://localhost:3000`** 
+**6.** **🎉 Open your browser and go to for and running the backend on `https://localhost:5000`** 
