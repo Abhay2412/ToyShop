@@ -5,13 +5,8 @@ import Product from '../models/productModel.js';
 // @route: GET Request to the products
 //@acesss: Public-> meaning anyone can hit this route
 const getProducts = asyncHandler(async (request, response) => {
-    const pageSize = 10;
-    const page = Number(request.query.pageNumber) || 1;
-    
-
-    const count = await Product.count({});
-    const products = await Product.find({}).limit(pageSize).skip(pageSize * (page - 1));
-    response.json({products, page, pages: Math.ceil(count / pageSize)});
+    const products = await Product.find({})
+    response.json(products);
 });
 
 // @description: Get one single item in the database

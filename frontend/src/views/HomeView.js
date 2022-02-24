@@ -8,14 +8,14 @@ import { listProducts } from '../actions/productActions';
 
 const HomeView = (match) => {
     const dispatch = useDispatch();
-
+    
     const productList = useSelector(state => state.productList);
 
     const { loading, error, products } = productList
 
     useEffect(() => {
         dispatch(listProducts());
-    }, [dispatch])
+    }, [dispatch]);
 
     return (
         <>
