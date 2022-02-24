@@ -73,5 +73,13 @@ const getMyOrders = asyncHandler(async (request, response) => {
 });
 
 
+// @description: Get all of the orders for the admin
+// @route: GET  Request to getting the order and go to order list 
+//@acesss: Private-> meaning nobody has access to this 
+const getOrders = asyncHandler(async (request, response) => {
+    const orders = await Order.find({}).populate('user', 'id name');
+    response.json(orders);
+});
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders };
+
+export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders, getOrders };
