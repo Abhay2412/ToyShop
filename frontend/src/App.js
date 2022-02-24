@@ -13,7 +13,7 @@ import ShippingView from './views/ShippingView';
 import PayView from './views/PayView';
 import PlaceOrderView from './views/PlaceOrderView';
 import OrderView from './views/OrderView';
-import UserListView from './views/UserListView';
+import UserDetailListView from './views/UserDetailListView';
 import UserEditView from './views/UserEditView';
 import ProductListView from './views/ProductListView';
 import ProductEditView from './views/ProductEditView';
@@ -34,7 +34,7 @@ const App = () => { //Arrow function
       <Route path='/profile' component={ProfileView} />
       <Route path='/product/:id' component={ProductDetailedView} />
       <Route path='/cart/:id?' component={CartView} />
-      <Route path='/admin/userlist' component={UserListView} />
+      <Route path='/admin/userlist' component={UserDetailListView} />
       <Route path='/admin/user/:id/edit' component={UserEditView} />
       <Route path='/admin/productlist' component={ProductListView} />
       <Route path='/admin/product/:id/edit' component={ProductEditView} />
