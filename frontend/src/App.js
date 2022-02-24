@@ -39,6 +39,7 @@ const App = () => { //Arrow function
       <Route path='/admin/productlist' component={ProductListView} />
       <Route path='/admin/product/:id/edit' component={ProductEditView} />
       <Route path='/admin/orderlist' component={OrderListView} />
+      <Route path='/search/:keyword' component={HomeView} />
       <Route path='/' component={HomeView} exact />
       </Container>
     </main>
