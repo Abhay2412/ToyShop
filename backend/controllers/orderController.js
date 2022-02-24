@@ -64,6 +64,24 @@ const updateOrderToPaid = asyncHandler(async (request, response) => {
 
 });
 
+// @description: Will be updating the order to being out for delivery to the user 
+// @route: GET  Request to getting the order and go to delivered
+//@acesss: Private-> meaning nobody has access to this 
+const updateOrderToOutForDelivery = asyncHandler(async (request, response) => {
+    const order = await Order.findById(request.params.id);
+
+    if(order) {
+        order.isDelivered = true;
+        order.deliveredAt = Date.now();
+        const updatedOrder = await order.save();
+
+        response.json(updatedOrder);
+    } else {
+        response.status(404);
+        throw new Error('Order not found in the database');
+    }
+});
+
 // @description: Get the user who is logged in orders and display them
 // @route: GET  Request to getting the order and go to myorders
 //@acesss: Private-> meaning nobody has access to this 
@@ -82,4 +100,4 @@ const getOrders = asyncHandler(async (request, response) => {
 });
 
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getMyOrders, getOrders };
+export { addOrderItems, getOrderById, updateOrderToPaid, updateOrderToOutForDelivery, getMyOrders, getOrders };
