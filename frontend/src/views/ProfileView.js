@@ -48,7 +48,7 @@ const ProfileView = ({ location, history }) => {
             }
         }
         
-    }, [dispatch, history, userInfo, user]);
+    }, [dispatch, history, userInfo, user, success]);
 
     const submitHandler = (e) => {
         e.preventDefault();
