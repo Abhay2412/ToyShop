@@ -24,7 +24,7 @@ Live Demo: ***https://toyshopapp.herokuapp.com/***
 
 ## Installation Procedure:
 
-**1. Clone this repo by running the following command :-**
+**1. Clone this repo by running the following command:**
 
 ```bash
  git clone https://github.com/Abhay2412/ToyShop
