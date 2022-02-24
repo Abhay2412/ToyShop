@@ -93,4 +93,42 @@ const updateProduct = asyncHandler(async (request, response) => {
     }
 });
 
-export { getProducts, getProductByID, deleteProduct, createProduct, updateProduct };
+// @description: Creating a new review for one single item in the database
+// @route: POST  Request to create the review for the item 
+//@acesss: Private-> protected route not to the public
+const createProductReview = asyncHandler(async (request, response) => {
+    const { rating, comment } = request.body;
+
+    const item = await Product.findById(request.params.id);
+    
+    if(item) {
+        const alreadyReviewed = item.reviews.find(r => r.user.toString() === request.user._id.toString());
+
+        if(alreadyReviewed) {
+            response.status(400);
+            throw new Error ('The product has been already reviewed by the user');
+        }
+
+        const review = {
+            name: request.user.name, 
+            rating: Number(rating),
+            comment, 
+            user: request.user._id
+        }
+
+        item.reviews.push(review);
+
+        item.numReviews = item.reviews.length;
+
+        item.rating = item.reviews.reduce((accumulator, product) => product.rating + accumulator, 0) / item.reviews.length;
+
+        await item.save();
+        response.status(201).json({ message: 'The review has been added' });
+    }
+    else {
+        response.status(404);
+        throw new Error('The item is not found');
+    }
+});
+
+export { getProducts, getProductByID, deleteProduct, createProduct, updateProduct, createProductReview };
